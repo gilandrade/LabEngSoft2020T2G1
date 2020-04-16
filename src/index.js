@@ -3,24 +3,44 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
-let altura;
-let peso;
-
+import { wait } from '@testing-library/react';
 
 class MyForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      age: null,
+      mass: '',
+      height: '',
+      IMC: null,
     };
   }
+
+  getIMC = () => {
+    console.log('http://127.0.0.1:5000/calc_IMC?mass=' + this.state.mass + '&height=' + this.state.height);
+    if (this.state.mass != '' && this.state.mass != null && this.state.height != '' && this.state.height != null)   {
+      fetch('http://127.0.0.1:5000/calc_IMC?mass=' + this.state.mass + '&height=' + this.state.height)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+        });
+    }
+  }
+
   myChangeHandler = (event) => {
     let nam = event.target.name;
     let val = event.target.value;
+    let IMC;
     this.setState({[nam]: val});
   }
+
+  callTwoFunctions = (event) => {
+    this.myChangeHandler(event);
+    setTimeout(() => {this.getIMC();}, 0); // adding a minimum delay
+  }
+  
+
   render() {
     return (
       <form>
@@ -28,16 +48,16 @@ class MyForm extends React.Component {
       <p>Coloque o seu peso em kg (separador decimal é o ponto):</p>
       <input
         type='text'
-        name='username'
-        onChange={this.myChangeHandler}
+        name='mass'
+        onChange={this.callTwoFunctions}
       />
       <p>Coloque a sua altura em metros (separador decimal é o ponto):</p>
       <input
         type='text'
-        name='age'
-        onChange={this.myChangeHandler}
+        name='height'
+        onChange={this.callTwoFunctions}
       />
-      <p>O seu IMC é {this.state.username/this.state.age/this.state.age}</p>
+      <p>O seu IMC é {this.state.IMC}</p>
       
       </form>
       
@@ -45,26 +65,6 @@ class MyForm extends React.Component {
   }
 }
 
-function readSingleFile(e) {
-  var file = e.target.files[0];
-  if (!file) {
-    return;
-  }
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    var contents = e.target.result;
-    displayContents(contents);
-  };
-  reader.readAsText(file);
-}
-
-function displayContents(contents) {
-  var element = document.getElementById('file-content');
-  element.textContent = contents;
-}
-
-
-var dados = {'peso': peso, 'altura': altura};
 
 ReactDOM.render(<MyForm />, document.getElementById('root'));
 

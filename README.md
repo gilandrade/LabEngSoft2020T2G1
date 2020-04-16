@@ -1,3 +1,13 @@
+It doesn't have a DB yet
+
+### FLASK ###
+In the project directory run:
+'export FLASK_APP = app.py' (if Linux)
+'set FLASK_APP = app.py' (if Windows)
+'flask run'
+Then the backend will run at http://127.0.0.1:5000/
+The only endpoint is /calc_IMC?mass=100&height=10 where you can change 100 and 10 to any other float number
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
