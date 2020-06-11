@@ -13,14 +13,20 @@ Login
 {% block content %}
     <div class="container">
 
-      <form class="form-signin", method="POST" action="/login">
-        <h2 class="form-signin-heading">Acesso</h2>
-        {{ form.hidden_tag() }}
-        {{ wtf.form_field(form.username) }}
-        {{ wtf.form_field(form.password) }}
-        {{ wtf.form_field(form.remember) }}
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Acessar</button>
-      </form>
 
+      <div style="background-color:#99ff33;padding:20px;border-radius:15px;border-color:#595959; border-width: 2px; width: 100%;">
+        <form class="form-signin", method="POST" action="/login">
+          <h2 class="form-signin-heading" style="text-align:center;">Acesso</h2>
+          {{ form.hidden_tag() }}
+          {{ wtf.form_field(form.username) }}
+          {{ wtf.form_field(form.password) }}
+          {{ wtf.form_field(form.remember) }}
+          <button class="btn btn-lg btn-primary btn-block" type="submit" style="background-color:#595959;">Acessar</button>
+        </form>
+      </div>
+
+      <footer>
+        <p>© Grupo 01 T2 LabSoft 2020</p>
+      </footer>
     </div> <!-- /container -->
 {% endblock %}
