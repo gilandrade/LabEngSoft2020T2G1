@@ -35,6 +35,7 @@ body {
   }
   @media (min-width: 768px) {
     .sidebar {
+      color:#99ff33;
       position: fixed;
       top: 51px;
       bottom: 0;
@@ -58,12 +59,13 @@ body {
   .nav-sidebar > li > a {
     padding-right: 20px;
     padding-left: 20px;
+    color:#595959;
   }
   .nav-sidebar > .active > a,
   .nav-sidebar > .active > a:hover,
   .nav-sidebar > .active > a:focus {
-    color: #fff;
-    background-color: #428bca;
+    color: #595959;
+    background-color: #99ff33;
   }
   
   
