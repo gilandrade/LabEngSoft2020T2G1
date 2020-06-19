@@ -11,8 +11,10 @@ import doctor from '../assets/doctor.png';
 import placeholderProgresso from '../assets/placeholder_progresso.png';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 
+import ProgressCircle from 'react-native-progress-circle'
 
-let porcentagemMeta = 63, quantPassos = 1415,metaPassos=2246, diasNaMeta=4;
+
+let porcentagemMeta = 63, quantPassos = 2000, metaPassos=2246, diasNaMeta=4;
 
 
 function getUltimaConquista(){
@@ -28,20 +30,31 @@ function getDias(){
 const HomeScreen = () => {
     return (
       <ScrollView>
-        <View style={{flex:1,alignItems:'center',backgroundColor:'#ffffff', marginHorizontal:15, marginTop:15}}>
+        <View style={{flex:1, alignItems:'center',backgroundColor:'#ffffff', marginHorizontal:15, marginTop:15}}>
+            <View style={{flex:1, flexDirection:'row', justifyContent:'space-between', margin:10}}>
+                <ProgressCircle
+                    percent={(quantPassos/metaPassos)*100}
+                    radius={70}
+                    borderWidth={8}
+                    color="#99FF33"
+                    shadowColor="#595959"
+                    bgColor="#ffffff"
+                >
+                    <Text style={{ fontSize: 30 }}>{((quantPassos/metaPassos)*100).toFixed()}%</Text>
+                </ProgressCircle>
 
+                <View style={[styles.itemMenuPrincipal, {height:'90%', width:'50%'} ]}>
+                    <Text style={{textAlign:'center', justifyContent:'center', fontSize:18, paddingTop:30, color:'#595959'}}> Você já completou {quantPassos} de {metaPassos} passos. Faltam {metaPassos-quantPassos}. </Text>
+                </View>
+
+            </View>
             
-            <Image source={placeholderProgresso}  style={[styles.itemMenuPrincipal, styles.progresso]}></Image>
-            <Text style={styles.textoProgresso}> Você já completou {quantPassos} de {metaPassos} passos. Faltam {metaPassos-quantPassos}.</Text>
-
-            
-
-            <View style={{height:2, width:'80%',borderWidth:1, bottom:30,}}></View>
+            <View style={{height:2, width:'80%', borderWidth:1, margin:30}}></View>
 
             <View style={[styles.itemMenuPrincipal, {height:80, width:'95%'} ]}>
                 
                 <Text style={{textAlign:'center',fontSize:18, padding:10,paddingLeft: 50, color:'#595959'}}> Você ainda precisa completar seu questionário semanal! </Text>
-                <Image source={form1} style={{width:'10%', height:40, bottom:50,left:10,}}></Image>
+                <Image source={form1} style={{width:'10%', height:40, bottom:50, left:10,}}></Image>
             </View>
 
             <View style={[styles.itemMenuPrincipal, {height:80, } ]}>

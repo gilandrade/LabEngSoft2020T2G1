@@ -8,9 +8,11 @@ import chiado from '../assets/chiado.png'
 import faltadear from '../assets/faltadear.png'
 import acordar from '../assets/acordar.png'
 import bombinha from '../assets/bombinha.png'
+import peak_flow from '../assets/peak_flow.png'
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 
 const fezDiario =true, fezSemanal=false;
+const submitForm = () => {let a = 2;}
 
 function ItemFormVF(props){
     
@@ -18,7 +20,7 @@ function ItemFormVF(props){
         <View style={[styles.itemQuestionario,{ flexDirection:'row'}]}>
             <Image style={{ width:100, height:100,}}source={props.src}></Image>
             
-            <View style={{ flexDirection:'column', alignItems:'center', left:'40%',}}>
+            <View style={{ flexDirection:'column', alignItems:'flex-start', left:'35%',}}>
                 
                 <Text style ={{fontSize:27, color:'#595959'}}>{props.name}</Text>
                 <CheckBoxDois title1='Sim' title2='Não'></CheckBoxDois>
@@ -28,11 +30,36 @@ function ItemFormVF(props){
     )
 }
 
+function ItemFormPeak(props){
+    
+    return(
+        <View style={[styles.itemQuestionario,{ flexDirection:'row'}]}>
+            <Image style={{ width:100, height:100,}}source={props.src}></Image>
+            
+            <View style={{ flexDirection:'column', alignItems:'space-between', left:'35%',}}>
+                
+                <Text style ={{fontSize:20, color:'#595959'}}>{props.name}</Text>
+                <View style={{ flexDirection:'row', justifyContent:'flex-start', top:'5%',}}>
+                    <View style={{flex:1}}>
+                        <TextInput keyboardType='decimal-pad' placeholder='Digite aqui...' style={{justifyContent:'space-around', borderWidth:1, width:'90%',height:40, borderColor:'#595959', backgroundColor:'#ffffff' }}></TextInput>
+                    </View>
+                    <View style={{flex:1}}>    
+                        <TextInput keyboardType='decimal-pad' placeholder='Digite aqui...' style={{justifyContent:'space-around', borderWidth:1, width:'90%',height:40, borderColor:'#595959', backgroundColor:'#ffffff' }}></TextInput>
+                    </View>
+                    <View style={{flex:1}}>    
+                        <TextInput keyboardType='decimal-pad' placeholder='Digite aqui...' style={{justifyContent:'space-around', borderWidth:1, width:'90%',height:40, borderColor:'#595959', backgroundColor:'#ffffff' }}></TextInput>
+                    </View>
+                </View>
+            </View>
+        </View>
+    )
+}
+
 function ItemFormSemanal(props){
     return(
-        <View style={[styles.itemQuestionario, {alignItems:'center'}]}>
+        <View style={[styles.itemQuestionario, {alignItems:'flex-start'}]}>
             <Text style={{textAlign:'center' , color:'#595959' }}>{props.pergunta}</Text>
-            <View style={{flexDirection:'column',}}>
+            <View style={{flexDirection:'column', left:'5%',}}>
                 
                 <CheckBoxZeroSeis title0={props.title0} title1={props.title1} title2={props.title2} title3={props.title3} 
                               title4={props.title4} title5={props.title5} title6={props.title6}></CheckBoxZeroSeis>
@@ -53,13 +80,13 @@ function ItemFormBarreiras(props){
 
 
 function formularioSintomas(){
-    let srcs = [tosse, chiado, faltadear, acordar, bombinha];
-    let names = ['Tosse', 'Chiado', 'Falta de Ar', 'Acordar ', 'Bombinha'];
+    let srcs = [tosse, chiado, faltadear, acordar, bombinha, peak_flow];
+    let names = ['Tosse', 'Chiado', 'Falta de Ar', 'Acordar ', 'Bombinha', 'Peak Flow (opcional)'];
     return(
         
             <View style={{flex:1,}}>
                 
-                <Text style = {[styles.tituloQuestionario, { top:20,}]}>Questionário de controle de ASMA - ACQ (Semanal) </Text>
+                <Text style = {[styles.tituloQuestionario, { top:20,}]}>Questionário de controle de ASMA - ACQ (Diário) </Text>
                 <Text style = {[{fontSize:15, textAlign:'center', top:20,}, (fezDiario ? {color:'green'} : {color:'red'}) ]}> Você {fezDiario ? "já fez " : 'ainda não fez'} seu questionário diário hoje!</Text>
                 <Text style = {{ fontSize:20, top:30, textAlign:'center'}}>Marque caso tenha tido algum destes sintomas hoje!</Text>
                 <View style={{top:40,}}>
@@ -68,10 +95,14 @@ function formularioSintomas(){
                     <ItemFormVF name={names[2]} src={srcs[2]} ></ItemFormVF>
                     <ItemFormVF name={names[3]} src={srcs[3]} ></ItemFormVF>
                     <ItemFormVF name={names[4]} src={srcs[4]} ></ItemFormVF>
+                    <ItemFormPeak name={names[5]} src={srcs[5]} ></ItemFormPeak>
                 </View>
 
+                <View style={[styles.bt, {backgroundColor:'red' ,top:40, margin:20,left:70,}]}>
+                    <TouchableOpacity onPress={submitForm()} title='Enviar'><Text style={{color:'white', textAlign:'center', fontSize:26}}>Enviar</Text></TouchableOpacity>
+                </View>
                 
-                <Text style = {[styles.tituloQuestionario, { top:30,}]}>Escala de sintomas (Diário)</Text>
+                <Text style = {[styles.tituloQuestionario, { top:30,}]}>Escala de sintomas (Semanal)</Text>
                 <Text style = {[{fontSize:15, textAlign:'center', top:30,}, (fezSemanal ? {color:'green'} : {color:'red'}) ]}> Você {fezSemanal ? "já fez " : 'ainda não fez'} seu questionário semanal!</Text>
                 <Text style = {{ fontSize:20, top:30, textAlign:'center'}}>Escolha apenas uma das opções.</Text>
 
@@ -112,6 +143,10 @@ function formularioSintomas(){
                     title4={` 4) 69-60% do previsto`} title5={` 5) 59-50% do previsto`} title6={` 6) < 50% do previsto `}></ItemFormSemanal>
                 </View>
                 
+                <View style={[styles.bt, {backgroundColor:'red' ,top:40, margin:20,left:70,}]}>
+                    <TouchableOpacity onPress={submitForm()} title='Enviar'><Text style={{color:'white', textAlign:'center', fontSize:26}}>Enviar</Text></TouchableOpacity>
+                </View>
+
                 <View style={{height:100,}}>
 
                 </View>
@@ -156,6 +191,10 @@ function formularioBarreiras(){
                     <CheckBoxCinco></CheckBoxCinco>
                    
                 </View>
+
+                <View style={[styles.bt, {backgroundColor:'red' ,top:0, margin:20,left:70,}]}>
+                    <TouchableOpacity onPress={submitForm()} title='Enviar'><Text style={{color:'white', textAlign:'center', fontSize:26}}>Enviar</Text></TouchableOpacity>
+                </View>
                   
             </View>
             <View >
@@ -172,6 +211,11 @@ function formularioBarreiras(){
                     <Text style={{height:20,margin:5,}}>5)</Text>
                     <TextInput placeholder='  Digite aqui...' style={{borderWidth:1, height:40,backgroundColor:'#ffffff'}}></TextInput>
                 </View>
+
+                <View style={[styles.bt, {backgroundColor:'red' ,top:0, margin:20,left:70,}]}>
+                    <TouchableOpacity onPress={submitForm()} title='Enviar'><Text style={{color:'white', textAlign:'center', fontSize:26}}>Enviar</Text></TouchableOpacity>
+                </View>
+
             </View>
         </View>
     );
