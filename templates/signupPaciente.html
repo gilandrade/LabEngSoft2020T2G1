@@ -1,0 +1,35 @@
+{% extends "dashboard.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Cadastro Paciente
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+<link rel="stylesheet" href="{{url_for('.static', filename='subTela.css')}}">
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<div class="subTela" style="border:4px solid red;" >
+    <p></p>
+
+    <div style="background-color:#99ff33;padding:20px;border-radius:15px;border-color:#595959; border-width: 2px; width: 100%;">
+        <form class="form-signin", method="POST" action="/signupPaciente">
+          <h2 class="form-signin-heading" style="text-align:center;">Cadastro Paciente:</h2>
+          {{ form.hidden_tag() }}
+          {{ wtf.form_field(form.name) }}
+          {{ wtf.form_field(form.username) }}
+          {{ wtf.form_field(form.email) }}
+          {{ wtf.form_field(form.password) }}
+          {{ wtf.form_field(form.age) }}
+          {{ wtf.form_field(form.weight) }}
+          {{ wtf.form_field(form.height) }}
+          <button class="btn btn-lg btn-primary btn-block" type="submit" style="background-color:#595959;">Cadastrar</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='signin.css')}}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+      <div class="infoBox">
+        <form  class="form-signin", method="POST" action="/login">
+          <h2 class="form-signin-heading">Acesso</h2>
+          {{ form.hidden_tag() }}
+          {{ wtf.form_field(form.username) }}
+          {{ wtf.form_field(form.password) }}
+          <div style="font-size: 50%;">
+          {{ wtf.form_field(form.remember) }}
+          </div>
+          <button class="botaoSubmit btn btn-lg btn-primary btn-block" type="submit">Acessar</button>
+        </form>
+      </div>
+
+      <footer>
+        <p>© Grupo 01 T2 LabSoft 2020</p>
+      </footer>
+    </div> <!-- /container -->
+{% endblock %}
