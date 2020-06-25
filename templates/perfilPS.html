@@ -12,8 +12,16 @@ Perfil do PS logado
 
 {% block content %}
 {{ super() }}
-<div class="subTela" style="border:4px solid green;" >
-    <p>Perfil do PS logado</p>
+<div class="subTela" >
+    <div style="margin:50px;">
+        <h class='tituloDeSecao'>Perfil do Usuário</h>
+        <div class='conteudoDaSecao'>
+           <p>Nome de Usuário: {{userPS}}</p> 
+           <p>Nome: {{nomePS}} </p>
+           <p>Email: {{emailPS}}</p>
+           <p>Conta de gerência: {{nivGerenciaPS}}</p>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

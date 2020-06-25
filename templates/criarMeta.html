@@ -1,0 +1,33 @@
+{% extends "dashboard.html" %}
+
+
+{% block title %}
+Criar Meta
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+<link rel="stylesheet" href="{{url_for('.static', filename='subTela.css')}}">
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<div class="subTela">
+    <div style="margin:50px;">
+        <h class="tituloDeSecao">Criar uma nova meta</h>
+        <div class="conteudoDaSecao">
+            <form method='POST' action='criarMeta'>
+                <label>Digite o nome do paciente que recebera a meta: </label><br>
+                <input type="text" name="nomePacienteMeta"><br><br>
+                <label>Meta a ser criada:</label><br>
+                <textarea name="novaMeta" style="width: 100%;"></textarea>
+                <br>
+                <input type="submit" value="Criar">
+                
+                </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "listaPacientes.html" %}
+<link rel="stylesheet" href="{{url_for('.static', filename='subTela.css')}}">
+
+{% block dadosPaciente %}
+    <div style="font-size:150%;border:2px solid #222222;border-radius: 10px;padding:15px;background-color: white;color:#222222">
+        <p>Voce não possui permissão para acessar os dados deste usuário. Um profissional da saúde só poderá ter acesso aos dados de um paciente caso esteja envolvido em seu tratamento ou caso possua um status de gerência.</p>
+        <br>
+        <a href="{{url_for('listaPacientes')}}">Voltar</a>
+    </div>
+    </div> 
+{% endblock %}
