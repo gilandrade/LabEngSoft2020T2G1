@@ -23,3 +23,5 @@ https://reactnavigation.org/docs/getting-started
   
   b) Pelo navegador: Basta clicar na opção de abrir pelo navegador na aba lateral esquerda da interface no seu browser. Uma nova aba será aberta. Nela, aperte F12 e use a visualização de celular disponível, escolhendo um modelo de celular qualquer. NOTA: ainda está em estado beta, e este modo de visualização gerou alguns bugs de posicionamento de objetos que não ocorrem no celular.
 
+
+NOTA: As telas 'SettingsScreen', 'SettingsScreen copy' e 'LoginScreen' estão nos arquivos apenas para fins de teste, e não estão implementados.
