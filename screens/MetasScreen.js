@@ -2,8 +2,14 @@ import * as React from 'react';
 import { ScrollView, Text, View, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 
 const metaPassos = 5000;
+let novoPassos;
 const metaDias = 3;
+let novoDias;
 const metaForms = 2;
+
+const enviaMetas = () => {
+    //envia pro back-end
+}
 
 const MetasScreen = () => {
     return (
@@ -26,17 +32,17 @@ const MetasScreen = () => {
             <View >
                 <Text style={{ padding: 10, fontSize: 15 }}>Deseja modificar suas metas? Toque no botão abaixo:</Text>
                 <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-                    <TextInput keyboardType='decimal-pad'
+                    <TextInput onChange={text => novoPassos = text} id='passos' keyboardType='decimal-pad'
                         style={{ padding: 10, width: '45%', height: 40, borderColor: 'gray', borderWidth: 1 }}
                         placeholder = 'Passos por dia'
                     />
-                    <TextInput keyboardType='decimal-pad'
+                    <TextInput onChange={text => novoDias = text} id='dias' keyboardType='decimal-pad'
                         style={{ padding: 10, width: '45%', height: 40, borderColor: 'gray', borderWidth: 1 }}
                         placeholder = 'Dias ativos'
                     />
                 </View>
                 <View style={{alignItems: 'center'}}>
-                    <TouchableOpacity style={[styles.bt, {borderWidth: 0, top: 10, }]} >
+                    <TouchableOpacity /*onPress=enviaMetas()*/ style={[styles.bt, {borderWidth: 0, top: 10, }]} >
                         <Text style={styles.textbt}>Alterar metas</Text>
                     </TouchableOpacity>
                 </View>

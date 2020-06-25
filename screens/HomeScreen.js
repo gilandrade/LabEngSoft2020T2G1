@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text, Image, ScrollView, View, StyleSheet, ActivityIndicator, FlatList } from 'react-native';
 
-//import APIData from './SettingsScreen';
-
-import contadorPassos from '../assets/controlePassos.png';
-import medalha1 from '../assets/Medalha1.png';
-import medalha2 from '../assets/Medalha2.png';
 import form1 from '../assets/form.png';
 import clap from '../assets/clap.png';
 import achievment from '../assets/reward.png';
@@ -36,7 +31,7 @@ function fazOFetch(){
     useEffect(() => {
         fetch('https://raw.githubusercontent.com/Daquisu/Calculo_Numerico/master/Passos2020-06-23.json')
         .then((response) => response.json())
-        .then((json) => setData(json["activities-steps"][10]))
+        .then((json) => setData(json["activities-steps"][20]))
         .catch((error) => console.error(error))
         .finally(() => setLoading(false));
     }, []);
