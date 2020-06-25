@@ -23,14 +23,14 @@ const MetasScreen = () => {
                     </Text>
                 </Text>
             </View>
-            <View style={{ top: 100 }}>
+            <View >
                 <Text style={{ padding: 10, fontSize: 15 }}>Deseja modificar suas metas? Toque no botão abaixo:</Text>
                 <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-                    <TextInput
+                    <TextInput keyboardType='decimal-pad'
                         style={{ padding: 10, width: '45%', height: 40, borderColor: 'gray', borderWidth: 1 }}
                         placeholder = 'Passos por dia'
                     />
-                    <TextInput
+                    <TextInput keyboardType='decimal-pad'
                         style={{ padding: 10, width: '45%', height: 40, borderColor: 'gray', borderWidth: 1 }}
                         placeholder = 'Dias ativos'
                     />
@@ -49,15 +49,14 @@ export default MetasScreen;
 
 const styles = StyleSheet.create({
     bt:{
-        backgroundColor:'#99FF33',
+        backgroundColor:'#595959',
         borderWidth:0,
         borderRadius:10,
         width:'40%',
-        height:50,
         },
     textbt:{
         textAlign:'center',
-        color:'black',
+        color:'white',
         paddingVertical:12,
         paddingHorizontal:10, 
     },

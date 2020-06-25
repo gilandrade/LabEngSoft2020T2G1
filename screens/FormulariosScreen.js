@@ -58,7 +58,7 @@ function ItemFormPeak(props){
 function ItemFormSemanal(props){
     return(
         <View style={[styles.itemQuestionario, {alignItems:'flex-start'}]}>
-            <Text style={{textAlign:'center' , color:'#595959' }}>{props.pergunta}</Text>
+            <Text style={{textAlign:'center' , color:'black' }}>{props.pergunta}</Text>
             <View style={{flexDirection:'column', left:'5%',}}>
                 
                 <CheckBoxZeroSeis title0={props.title0} title1={props.title1} title2={props.title2} title3={props.title3} 
@@ -72,7 +72,7 @@ function ItemFormSemanal(props){
 function ItemFormBarreiras(props){
     return(
         <View style={[styles.itemQuestionario, {alignItems:'center'}]}>
-            <Text style={{textAlign:'center', color:'#595959'}}>{props.afirmacao}</Text> 
+            <Text style={{textAlign:'center', color:'black'}}>{props.afirmacao}</Text> 
             <CheckBoxCinco></CheckBoxCinco>
         </View>
     );
@@ -98,7 +98,7 @@ function formularioSintomas(){
                     <ItemFormPeak name={names[5]} src={srcs[5]} ></ItemFormPeak>
                 </View>
 
-                <View style={[styles.bt, {backgroundColor:'red' ,top:40, margin:20,left:70,}]}>
+                <View style={[styles.bt, {backgroundColor:'#595959' ,top:40, margin:20,left:70,borderColor:"#ffffff"}]}>
                     <TouchableOpacity onPress={submitForm()} title='Enviar'><Text style={{color:'white', textAlign:'center', fontSize:26}}>Enviar</Text></TouchableOpacity>
                 </View>
                 
@@ -143,7 +143,7 @@ function formularioSintomas(){
                     title4={` 4) 69-60% do previsto`} title5={` 5) 59-50% do previsto`} title6={` 6) < 50% do previsto `}></ItemFormSemanal>
                 </View>
                 
-                <View style={[styles.bt, {backgroundColor:'red' ,top:40, margin:20,left:70,}]}>
+                <View style={[styles.bt, {backgroundColor:'#595959' ,top:40, margin:20,left:70,}]}>
                     <TouchableOpacity onPress={submitForm()} title='Enviar'><Text style={{color:'white', textAlign:'center', fontSize:26}}>Enviar</Text></TouchableOpacity>
                 </View>
 
@@ -158,7 +158,7 @@ function formularioBarreiras(){
     return(
         <View >
             <View>
-                <Text style={styles.tituloQuestionario}>Fatores pessoais (intrínseco)</Text>
+                <Text style={[styles.tituloQuestionario, {marginTop:"6%",textAlign:'center'}]}>Fatores pessoais{'\n'} (intrínseco)</Text>
                 
                 <ItemFormBarreiras afirmacao='Eu sinto que não tenho energia'></ItemFormBarreiras> 
                 <ItemFormBarreiras afirmacao='Eu tenho limitações físicas (musculares e/ou articulares)'></ItemFormBarreiras> 
@@ -187,12 +187,12 @@ function formularioBarreiras(){
                 <ItemFormBarreiras afirmacao='Falta de equipamento disponível para eu realizar exercício'></ItemFormBarreiras>
                 <View style={[styles.itemQuestionario, {alignItems:'center'}]}>
                     <Text style={{textAlign:'center', color:'#595959'}}>Outros (Digite o motivo abaixo)</Text>
-                    <TextInput placeholder='Digite aqui...' style={{borderWidth:1, width:'90%',height:40, borderColor:'#595959', backgroundColor:'#ffffff' }}></TextInput>
+                    <TextInput placeholder=' Digite aqui...' style={[styles.inputEscrito, {borderWidth:1, width:'90%',height:40, borderColor:'#595959', backgroundColor:'#ffffff' }]}></TextInput>
                     <CheckBoxCinco></CheckBoxCinco>
                    
                 </View>
 
-                <View style={[styles.bt, {backgroundColor:'red' ,top:0, margin:20,left:70,}]}>
+                <View style={[styles.bt, {top:0, margin:20,left:70,}]}>
                     <TouchableOpacity onPress={submitForm()} title='Enviar'><Text style={{color:'white', textAlign:'center', fontSize:26}}>Enviar</Text></TouchableOpacity>
                 </View>
                   
@@ -201,18 +201,18 @@ function formularioBarreiras(){
                 <Text style={[styles.tituloQuestionario]}>Cite 5 atividades que você mais sente falta de ar ou cansaço durante o seu dia a dia em ordem decrescente (do maior para o menor)</Text>
                 <View style={[styles.itemQuestionario,{margin:10, }]}>
                     <Text style={{height:20,margin:5,}}>1)</Text>
-                    <TextInput placeholder='  Digite aqui...' style={{borderWidth:1, height:40,backgroundColor:'#ffffff'}}></TextInput>
+                    <TextInput placeholder='  Digite aqui...' style={styles.inputEscrito}></TextInput>
                     <Text style={{height:20,margin:5,}}>2)</Text>
-                    <TextInput placeholder='  Digite aqui...' style={{borderWidth:1, height:40,backgroundColor:'#ffffff'}}></TextInput>
+                    <TextInput placeholder='  Digite aqui...' style={styles.inputEscrito}></TextInput>
                     <Text style={{height:20,margin:5,}}>3)</Text>
-                    <TextInput placeholder='  Digite aqui...' style={{borderWidth:1, height:40,backgroundColor:'#ffffff'}}></TextInput>
+                    <TextInput placeholder='  Digite aqui...' style={styles.inputEscrito}></TextInput>
                     <Text style={{height:20,margin:5,}}>4)</Text>
-                    <TextInput placeholder='  Digite aqui...' style={{borderWidth:1, height:40,backgroundColor:'#ffffff'}}></TextInput>
+                    <TextInput placeholder='  Digite aqui...' style={styles.inputEscrito}></TextInput>
                     <Text style={{height:20,margin:5,}}>5)</Text>
-                    <TextInput placeholder='  Digite aqui...' style={{borderWidth:1, height:40,backgroundColor:'#ffffff'}}></TextInput>
+                    <TextInput placeholder='  Digite aqui...' style={styles.inputEscrito}></TextInput>
                 </View>
 
-                <View style={[styles.bt, {backgroundColor:'red' ,top:0, margin:20,left:70,}]}>
+                <View style={[styles.bt, {top:0, margin:20,left:70,}]}>
                     <TouchableOpacity onPress={submitForm()} title='Enviar'><Text style={{color:'white', textAlign:'center', fontSize:26}}>Enviar</Text></TouchableOpacity>
                 </View>
 
@@ -230,15 +230,19 @@ const FormulariosScreen = () => {
     return (
         <View style={{flex:1,  marginHorizontal:15, marginTop:15}} >
             <ScrollView style={{backgroundColor:'#ffffff',}}>
-                <View style={{marginHorizontal:2,height:72, justifyContent:'space-between', flexDirection:'row'}} >
+                <View style={{ marginHorizontal:2,height:72, justifyContent:'space-between', flexDirection:'row'}} >
                 
-                    <TouchableOpacity style={[styles.bt, {top:10,left:'10%', }]} onPress={()=>setSintomas(true) }>
-                        <Text style={styles.textbt}>Questionário de controle de Asma</Text>
+                    <TouchableOpacity style={[styles.bt, {backgroundColor:"#99ff33", top:10,left:'10%',textAlign:'center', }]} onPress={()=>setSintomas(true) }>
+                        <View style={{flex:1, justifyContent:'space-around',}}>    
+                            <Text style={[styles.textbt, {textAlign:'center',}]}>Questionário de controle de Asma</Text>
+                        </View>
                     </TouchableOpacity>
                 
                     
-                    <TouchableOpacity style={[styles.bt, {top:10,right:'10%',}]} onPress={()=>setSintomas(false) }>
-                        <Text style={styles.textbt}>Barreiras</Text>
+                    <TouchableOpacity style={[styles.bt, {backgroundColor:"#99ff33",top:10,right:'10%',textAlign:'center',}]} onPress={()=>setSintomas(false) }>
+                        <View style={{flex:1, justifyContent:'space-around'}}>
+                            <Text style={[styles.textbt, { justifyContent:'center',}]}>Barreiras</Text>
+                        </View>
                     </TouchableOpacity>
                 
                 </View>
@@ -258,16 +262,16 @@ export default FormulariosScreen;
 
 const styles = StyleSheet.create({
     bt:{
-        backgroundColor:'#99ff33',
+        backgroundColor:'#595959',
         borderWidth:1,
         borderColor:'#595959', 
         borderRadius:10,
         width:'47%',
-        height:50,
+        padding:5,
         },
     textbt:{
         textAlign:'center',
-        color:'#595959',
+        color:'black',
         paddingVertical:5,
         paddingHorizontal:10, 
     },
@@ -291,5 +295,11 @@ const styles = StyleSheet.create({
         fontSize:20,
         textAlign:'center',
     },
+    inputEscrito:{
+        borderRadius:5,
+        borderWidth:1,
+        height:40,
+        backgroundColor:'#ffffff',
+    }
    
 });

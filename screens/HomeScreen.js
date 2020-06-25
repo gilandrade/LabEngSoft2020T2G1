@@ -1,5 +1,7 @@
-import * as React from 'react';
-import { Text, Image, ScrollView, View, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, Image, ScrollView, View, StyleSheet, ActivityIndicator, FlatList } from 'react-native';
+
+//import APIData from './SettingsScreen';
 
 import contadorPassos from '../assets/controlePassos.png';
 import medalha1 from '../assets/Medalha1.png';
@@ -14,7 +16,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import ProgressCircle from 'react-native-progress-circle'
 
 
-let porcentagemMeta = 63, quantPassos = 2000, metaPassos=2246, diasNaMeta=4;
+let quantPassos, metaPassos=2246, diasNaMeta=4;
 
 
 function getUltimaConquista(){
@@ -27,9 +29,26 @@ function getDias(){
   return 7;
 }
 
+function fazOFetch(){
+    const [isLoading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        fetch('https://raw.githubusercontent.com/Daquisu/Calculo_Numerico/master/Passos2020-06-23.json')
+        .then((response) => response.json())
+        .then((json) => setData(json["activities-steps"][10]))
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
+    }, []);
+
+       quantPassos = isLoading ? 0 : parseFloat(data.value)
+}
+
+
 const HomeScreen = () => {
     return (
       <ScrollView>
+        {fazOFetch()}
         <View style={{flex:1, alignItems:'center',backgroundColor:'#ffffff', marginHorizontal:15, marginTop:15}}>
             <View style={{flex:1, flexDirection:'row', justifyContent:'space-between', margin:10}}>
                 <ProgressCircle
