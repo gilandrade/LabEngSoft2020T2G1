@@ -14,8 +14,8 @@ https://reactnavigation.org/docs/getting-started
 4) Entre na pasta recém criada ("cd Nome_Projeto")
 5) Agora iremos instalar as dependências adicionais relacionadas ao React Navigation. Use o comando "npm install @react-navigation/native"
 6) Use o comando "expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view"
-7) Finalmente, use os comandos "npm install @react-navigation/stack" e "npm install @react-navigation/bottom-tabs"
-8) Copiei os arquivos e pastas do repositório do Git para esta pasta do projeto.
+7) Finalmente, use os comandos "npm install @react-navigation/stack", "npm install @react-navigation/bottom-tabs" e "npm install --save react-native-progress-circle"
+8) Copie os arquivos e pastas do repositório do Git para esta pasta do projeto.
 9) Para rodar o projeto, use "npm start". Uma página no seu navegador irá ser aberta como interface de visualização.
 10) Para ver o estado do aplicativo em si, há dois métodos:
   
