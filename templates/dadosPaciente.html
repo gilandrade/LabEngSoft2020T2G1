@@ -1,0 +1,50 @@
+{% extends "listaPacientes.html" %}
+<link rel="stylesheet" href="{{url_for('.static', filename='subTela.css')}}">
+
+{% block dadosPaciente %}
+    
+        <h><b><u>Dados de cadastro do paciente: </u></b></h> <br><br>
+        <div style="padding-left: 20px;">
+            <p>Nome : {{nomePaciente}}</p>
+            <p>Idade : {{idadePaciente}}</p>
+            <p>Peso : {{pesoPaciente}}</p>
+            <p>Altura : {{alturaPaciente/100}}</p>
+        <br>
+        </div>
+        
+        
+        <h><b><u>Metas definidas para este paciente: </u></b></h> <br><br>
+        <div style="padding-left: 20px;">
+            {% for meta in metas %}
+            <p>{{meta}}</p>
+            {% endfor %}
+        <br></div>
+
+        <br>
+        <h><b><u>Exercícios separados para este paciente: </u></b></h> <br><br>
+        <div style="padding-left: 20px;">
+            {% for nomeExercicio in nomeExercicios %}
+            <p>{{ nomeExercicio }}</p>
+            {% endfor %}
+        <br></div>
+
+        <h><b><u>Histórico de passos coletados pelo Fitbit: </u></b></h> <br><br>
+        <table style="width: 100%;border:1.5px solid #222222;border-collapse: collapse;">
+            <tr style="border:1.5px solid #222222;border-collapse: collapse;background-color: #c1c1c1;">
+                <th style="text-align: center;width:50%;border:1.5px solid #222222;border-collapse: collapse;">Dia</th>
+                <th style="text-align: center;width:50%;border:1.5px solid #222222;border-collapse: collapse;">Quantidade de passos</th>
+            </tr>
+            {% for diaFitbit in dadosFitbit %}
+            <tr>
+                
+                <td style="padding-left:15px;width:50%;border:1.5px solid #222222;border-collapse: collapse;">{{ diaFitbit['date'] }}</td>
+                <td style="padding-left:15px;width:50%;border:1.5px solid #222222;border-collapse: collapse;">{{ diaFitbit['steps'] }}</td>
+                
+            </tr>
+            {% endfor %}
+        </table>
+         
+        
+    </div>
+     
+{% endblock %}
