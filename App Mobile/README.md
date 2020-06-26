@@ -6,7 +6,7 @@ Primeiro, tenha um Node.js intalado na sua máquina. Os comandos devem ser utili
 
 1) Crie uma pasta base como ambiente de trabalho geral
 2) Usando o prompt de comando, navegue até essa pasta e dê o comando: "npm install -g expo-cli"
-3) Use o comando "expo init Nome_Projeto" para criar um projeto em react native, substituindo Nome_Projeto pelo nome que quiser
+3) Use o comando "expo init Nome_Projeto" para criar um projeto em react native, substituindo Nome_Projeto pelo nome que quiser. Selecione a opção "blank"
 4) Entre na pasta recém criada ("cd Nome_Projeto")
 5) Agora iremos instalar as dependências adicionais relacionadas ao React Navigation. Use o comando "npm install @react-navigation/native"
 6) Use o comando "expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view"
