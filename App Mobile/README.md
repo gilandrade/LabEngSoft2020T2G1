@@ -22,7 +22,7 @@ Primeiro, tenha um Node.js intalado na sua máquina. Os comandos devem ser utili
 
 NOTA: As telas 'SettingsScreen', 'SettingsScreen copy' e 'LoginScreen' estão nos arquivos apenas para fins de teste, e não estão implementados.
 
-Páginas para enventual consulta e pesquisa de React Native e Navigation:
+Páginas para eventual consulta e pesquisa de React Native e Navigation:
 
 https://reactnative.dev/docs/environment-setup
 
