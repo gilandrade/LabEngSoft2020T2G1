@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CheckBox, Text, StyleSheet, View } from "react-native";
 
-export default App = () => {
+const SettingsScreen = () => {
   const [isSelected, setSelection] = useState(false);
   const [isSelected2, setSelection2] = useState(false);
 
@@ -27,6 +27,8 @@ export default App = () => {
     </View>
   );
 };
+
+export default SettingsScreen;
 
 const styles = StyleSheet.create({
   container: {
