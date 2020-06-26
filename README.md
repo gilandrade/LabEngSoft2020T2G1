@@ -1,3 +1,4 @@
+Todos os arquivos do projeto se encontram neste branch (master).
 Na pasta "App Mobile" se encontram os arquivos referentes à aplicação mobile e como testá-la.
 Na pasta "Web - Back-end" se encontram os arquivos referentes à interface web e ao banco de dados e como testá-los.
 
