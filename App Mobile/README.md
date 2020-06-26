@@ -2,11 +2,7 @@
 
 COMO INSTALAR OS PACOTES NECESSÁRIOS PARA RODAR O CÓDIGO NO SEU COMPUTADOR
 
-Primeiro, tenha um Node.js intalado na sua máquina. Os passos a seguir podem ser verificados nas páginas de documentação do react native e react navigation, os respectivos links seguem abaixo. Os comandos devem ser utilizados no prompt de comando SEM ASPAS.
-
-https://reactnative.dev/docs/environment-setup
-
-https://reactnavigation.org/docs/getting-started
+Primeiro, tenha um Node.js intalado na sua máquina. Os comandos devem ser utilizados no prompt de comando SEM ASPAS.
 
 1) Crie uma pasta base como ambiente de trabalho geral
 2) Usando o prompt de comando, navegue até essa pasta e dê o comando: "npm install -g expo-cli"
@@ -25,3 +21,9 @@ https://reactnavigation.org/docs/getting-started
 
 
 NOTA: As telas 'SettingsScreen', 'SettingsScreen copy' e 'LoginScreen' estão nos arquivos apenas para fins de teste, e não estão implementados.
+
+Páginas para enventual consulta e pesquisa de React Native e Navigation:
+
+https://reactnative.dev/docs/environment-setup
+
+https://reactnavigation.org/docs/getting-started
