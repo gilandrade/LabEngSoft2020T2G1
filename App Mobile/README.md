@@ -17,7 +17,7 @@ Primeiro, tenha um Node.js intalado na sua máquina. Os comandos devem ser utili
   
   a) Pelo celular: Para celulares android, basta instalar o aplicativo Expo na play store e scanear o qr code.
   
-  b) Pelo navegador: Basta clicar na opção de abrir pelo navegador na aba lateral esquerda da interface no seu browser. Uma nova aba será aberta. Nela, aperte F12 e use a visualização de celular disponível, escolhendo um modelo de celular qualquer. NOTA: ainda está em estado beta, e este modo de visualização gerou alguns bugs de posicionamento de objetos que não ocorrem no celular.
+  b) (NÃO RECOMENDADO: O simulador web do Expo não funciona adequandamente e não representa a situação real de uso do aplicativo no celular) Pelo navegador: Basta clicar na opção de abrir pelo navegador na aba lateral esquerda da interface no seu browser. Uma nova aba será aberta. Nela, aperte F12 e use a visualização de celular disponível, escolhendo um modelo de celular qualquer. NOTA: esta opção ainda está em estado beta, e este modo de visualização gerou bugs de posicionamento de objetos que não ocorrem no celular.
 
 
 NOTA: As telas 'SettingsScreen', 'SettingsScreen copy' e 'LoginScreen' estão nos arquivos apenas para fins de teste, e não estão implementados.
