@@ -1,0 +1,11 @@
+{% extends "listaPacientes.html" %}
+<link rel="stylesheet" href="{{url_for('.static', filename='subTela.css')}}">
+
+{% block dadosPaciente %}
+    <div style="font-size:150%;border:2px solid #222222;border-radius: 10px;padding:15px;background-color: white;color:#222222">
+        <p>O usuário não foi encontrado. Verifique se o nome foi digitado corretamente.</p>
+        <br>
+        <a href="{{url_for('listaPacientes')}}">Voltar</a>
+    </div>
+    </div> 
+{% endblock %}

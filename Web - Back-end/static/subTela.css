@@ -1,0 +1,26 @@
+.subTela{
+    border: 2px solid #222222;
+    background-color: #99ff33;
+    border-radius: 15px;;
+    width: 75%;
+    position: absolute;
+    left:260px;
+    margin:20px;
+  }
+ .tituloDeSecao{
+  width: 100%;
+  border:2px solid #222222;
+  padding: 5px 10px;
+  border-radius:10px ;
+  font-size: 400%;
+  color:white;
+  -webkit-text-stroke: 1.5px #222222;"
+ }
+ .conteudoDaSecao{
+    margin-top: 15px;
+    border:2px solid #222222;
+    background-color: white;
+    font-size:130%;
+    border-radius: 10px;
+    padding:20px;
+ }

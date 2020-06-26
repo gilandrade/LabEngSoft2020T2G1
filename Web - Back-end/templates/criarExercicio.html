@@ -1,0 +1,46 @@
+{% extends "dashboard.html" %}
+
+{% block title %}
+Criar Exercicio
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+<link rel="stylesheet" href="{{url_for('.static', filename='subTela.css')}}">
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<div class="subTela">
+    <div style="margin:50px;">
+        <h class="tituloDeSecao">Adicionar um exercício a um paciente</h>
+        <div class="conteudoDaSecao">
+            <form method='POST' action='criarExercicio'>
+                <label>Digite o nome do paciente que recebera este exercício: </label>
+                <br>
+                <input type="text" name="nomePacienteExercicio">
+                <br><br>
+                <label>Título do exercício:</label><br>
+                <input type='text' name='tituloExercicio'>
+                <br>
+                <label>Descrição do exercício: </label>
+                <textarea name="descricaoExercicio" style="width: 100%;"></textarea>
+                <label>Vídeo explicativo sobre o exercício (opcional)</label>
+                <br>
+                <input type='text' name='linkExercicio' value=''>
+
+                <br><br>
+                <input type="submit" value="Criar">
+                
+                </form>
+
+                <p> Paciente: {{pacienteExercicio}}</p>
+                <p> Nome ex: {{tituloExercicio}}</p>
+                <p> descrição: {{descricaoExercicio}}</p>
+                <P> LINK: {{linkExercicio}}</P>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

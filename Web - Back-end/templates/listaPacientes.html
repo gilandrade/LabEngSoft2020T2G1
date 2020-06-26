@@ -1,0 +1,35 @@
+{% extends "dashboard.html" %}
+
+{% block title %}
+Lista de Pacientes
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+<link rel="stylesheet" href="{{url_for('.static', filename='subTela.css')}}">
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<div class="subTela">
+    <div style="margin:50px;">
+        <h class="tituloDeSecao" >Dados do paciente</h>
+            <form method='POST' action='listaPacientes' style="margin-top: 20px;">
+                <label>Digite o nome do paciente que deseja encontrar</label>
+                <br>
+                
+                <input type="text" name="nomePacienteBusca">
+                <input type="submit" value="Buscar">
+                <br>
+                <br>
+                <div class="conteudoDaSecao">
+                {% block dadosPaciente %}
+                {% endblock %}
+            </div>
+            </form>
+        
+    </div>
+</div>
+
+{% endblock %}

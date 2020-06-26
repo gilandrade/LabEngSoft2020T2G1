@@ -1,0 +1,55 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Sign Up
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div  class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Projeto LabSoft</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li style="background-color:#222222;" class="active"><a href="#">Cadastro</a></li>
+        
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<div style="position:relative;left:100px;" class="container">
+
+  <div class="infoBox">
+    <form class="form-signin", method="POST" action="/signup">
+      <h2 class="form-signin-heading" style="text-align:center;">Cadastro</h2>
+      {{ form.hidden_tag() }}
+      {{ wtf.form_field(form.username) }}
+      {{ wtf.form_field(form.email) }}
+      {{ wtf.form_field(form.password) }}
+      {{ wtf.form_field(form.age) }}
+      {{ wtf.form_field(form.weight) }}
+      <button class="botaoSubmit btn btn-lg btn-primary btn-block" type="submit">Cadastrar-se</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>© Grupo 01 T2 LabSoft 2020</p>
+  </footer>
+
+</div> <!-- /container -->
+{% endblock %}
