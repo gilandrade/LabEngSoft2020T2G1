@@ -11,7 +11,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import ProgressCircle from 'react-native-progress-circle'
 
 
-let quantPassos, metaPassos=2246, diasNaMeta=4;
+let quantPassos, metaPassos=1000, diasNaMeta=4;
 
 
 function getUltimaConquista(){
@@ -39,6 +39,16 @@ function fazOFetch(){
        quantPassos = isLoading ? 0 : parseFloat(data.value)
 }
 
+const notif = () => {
+    if ((quantPassos/metaPassos)*100 >= 100) {
+        return (
+            <View style={[styles.itemMenuPrincipal, {height:80, width:'95%'} ]}>
+                <Text style={{ textAlign:'center',fontSize:18, padding:10, paddingLeft: 50, color:'#595959'}}> Você completou sua meta diária! </Text>
+                <Image source={form1} style={{width:'10%', height:40, bottom:50, left:10,}}></Image>
+            </View>
+        );
+    }
+}
 
 const HomeScreen = () => {
     return (
@@ -58,15 +68,16 @@ const HomeScreen = () => {
                 </ProgressCircle>
 
                 <View style={[styles.itemMenuPrincipal, {height:'90%', width:'50%'} ]}>
-                    <Text style={{textAlign:'center', justifyContent:'center', fontSize:18, paddingTop:30, color:'#595959'}}> Você já completou {quantPassos} de {metaPassos} passos. Faltam {metaPassos-quantPassos}. </Text>
+                    <Text style={{textAlign:'center', justifyContent:'center', fontSize:18, paddingTop:30, color:'#595959'}}> Você já completou {quantPassos} de {metaPassos} passos. Faltam {(metaPassos-quantPassos < 1) ? 0 : metaPassos-quantPassos}. </Text>
                 </View>
 
             </View>
             
             <View style={{height:2, width:'80%', borderWidth:1, margin:30}}></View>
 
+            {notif()}
+
             <View style={[styles.itemMenuPrincipal, {height:80, width:'95%'} ]}>
-                
                 <Text style={{textAlign:'center',fontSize:18, padding:10,paddingLeft: 50, color:'#595959'}}> Você ainda precisa completar seu questionário semanal! </Text>
                 <Image source={form1} style={{width:'10%', height:40, bottom:50, left:10,}}></Image>
             </View>

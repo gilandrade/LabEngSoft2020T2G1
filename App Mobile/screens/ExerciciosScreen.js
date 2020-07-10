@@ -1,6 +1,25 @@
 import * as React from 'react';
-import { TouchableOpacity, Linking, ScrollView, SectionList, StyleSheet, Text, View } from 'react-native';
+import {FlatList, TouchableOpacity, Linking, ScrollView, SectionList, StyleSheet, Text, View } from 'react-native';
 
+const exercicios = {
+  '203':[
+    {
+      tituloExercicio:'Supino declinado',
+      descricaoExercicio:'Faz o supino declinado porra, seila, n tem mt o q explicar',
+      linkExercicio:"https://www.youtube.com/watch?v=_Mxu9sYvRfc",
+    },
+    {
+      tituloExercicio:'Supino declinado',
+      descricaoExercicio:'Faz o supino declinado porra, seila, n tem mt o q explicar',
+      linkExercicio:'https://www.youtube.com/watch?v=_Mxu9sYvRfc',
+    },
+    {
+      tituloExercicio:'Supino declinado',
+      descricaoExercicio:'Faz o supino declinado porra, seila, n tem mt o q explicar',
+      linkExercicio:'https://www.youtube.com/watch?v=_Mxu9sYvRfc',
+    },
+  ]
+}
 
 function ItemExercicios(props){
 
@@ -21,14 +40,13 @@ function ItemExercicios(props){
 
 const ExerciciosScreen = () => {
     return (
-        <ScrollView style={[styles.container,  {backgroundColor:'#ffffff', marginHorizontal:15, marginTop:15} ]}>
-
-          <ItemExercicios title='[nome_do_exercício] - Dificuldade: Médio' data= 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut tellus felis. Etiam eu turpis condimentum, accumsan lorem quis, ultricies nisi. Fusce id est blandit, tempus mi et, facilisis augue. Phasellus quis pellentesque orci. Duis non lectus leo. Nam at ornare neque, a accumsan velit. Maecenas et magna nibh. Vivamus quis elit laoreet, dapibus est quis, placerat erat. ' url='https://www.youtube.com/watch?v=YCZd1eAPLq0'></ItemExercicios>
-          <ItemExercicios title='[nome_do_exercício] - Dificuldade: Médio' data= 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut tellus felis. Etiam eu turpis condimentum, accumsan lorem quis, ultricies nisi. Fusce id est blandit, tempus mi et, facilisis augue. Phasellus quis pellentesque orci. Duis non lectus leo. Nam at ornare neque, a accumsan velit. Maecenas et magna nibh. Vivamus quis elit laoreet, dapibus est quis, placerat erat. ' url='https://google.com'></ItemExercicios>
-          <ItemExercicios title='[nome_do_exercício] - Dificuldade: Médio' data= 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut tellus felis. Etiam eu turpis condimentum, accumsan lorem quis, ultricies nisi. Fusce id est blandit, tempus mi et, facilisis augue. Phasellus quis pellentesque orci. Duis non lectus leo. Nam at ornare neque, a accumsan velit. Maecenas et magna nibh. Vivamus quis elit laoreet, dapibus est quis, placerat erat. ' url='https://google.com'></ItemExercicios>
-          <ItemExercicios title='[nome_do_exercício] - Dificuldade: Médio' data= 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut tellus felis. Etiam eu turpis condimentum, accumsan lorem quis, ultricies nisi. Fusce id est blandit, tempus mi et, facilisis augue. Phasellus quis pellentesque orci. Duis non lectus leo. Nam at ornare neque, a accumsan velit. Maecenas et magna nibh. Vivamus quis elit laoreet, dapibus est quis, placerat erat. ' url='https://google.com'></ItemExercicios>
-
-        </ScrollView>
+        <View style={[styles.container,  {backgroundColor:'#ffffff', marginHorizontal:15, marginTop:15} ]}>
+            <FlatList
+                data={exercicios['203']}
+                renderItem={({item}) => <ItemExercicios title={item.tituloExercicio} data={item.descricaoExercicio} url={item.linkExercicio}></ItemExercicios>}>   
+            </FlatList>
+         
+        </View>
     );
 };
 

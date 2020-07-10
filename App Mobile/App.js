@@ -11,6 +11,10 @@ import HomeScreen from './screens/HomeScreen';
 import MetasScreen from './screens/MetasScreen';
 import FormulariosScreen from './screens/FormulariosScreen';
 import SettingsScreen from './screens/SettingsScreen';
+import LoginScreen from './screens/LoginScreen';
+import { ActivityIndicator } from 'react-native-paper';
+import { AuthContext } from './screens/modulos_extra/context';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const ExerciciosStack = createStackNavigator();
 const FAQStack = createStackNavigator();
@@ -116,9 +120,104 @@ function MyTabs() {
 }
 
 export default function App() {
+  //const [isLoading, setIsLoading] = React.useState(true);
+  //const [userToken, setUserToken] = React.useState(null);
+
+  const initialLoginState = {
+    isLoading: true,
+    userName: null,
+    userToken: null,
+  };
+
+  const loginReducer = (prevState, action) => {
+    switch( action.type ) {
+      case 'PEGAR_TOKEN':
+        return {
+          ...prevState,
+          userToken: action.token,
+          isLoading: false,
+        };
+      case 'LOGIN':
+        return {
+          ...prevState,
+          userName: action.id,
+          userToken: action.token,
+          isLoading: false,
+        };
+      case 'LOGOUT':
+        return {
+          ...prevState,
+          userName: null,
+          userToken: null,
+          isLoading: false,
+        };
+    }
+  };
+
+  const [LoginState, dispatch] = React.useReducer(loginReducer, initialLoginState)
+
+  const authContext = React.useMemo(() => ({
+    signIn: async(userName, password) => {
+      //setUserToken('qwerty');
+      //setIsLoading(false);
+
+      let userToken;
+      userToken = null;
+      if (userName == 'teste' && password == 'senha') {
+        userToken = 'poiuy';
+        try{
+          await AsyncStorage.setItem('userToken', userToken);
+        } catch(e) {
+          console.log(e);
+        }
+      }
+      dispatch({ type: 'LOGIN', id: userName, token: userToken });
+    },
+    signOut: async() => {
+      //setUserToken(null);
+      //setIsLoading(false);
+      try{
+        await AsyncStorage.removeItem('userToken');
+      } catch(e) {
+        console.log(e);
+      }
+      dispatch({ type: 'LOGOUT' });
+    },
+
+  }), []);
+
+  React.useEffect(() => {
+    setTimeout(async() => {
+      //setIsLoading(false);
+      let userToken;
+      userToken = null;
+      try{
+        userToken = await AsyncStorage.getItem('userToken');
+      } catch(e) {
+        console.log(e);
+      }
+      dispatch({ type: 'PEGAR_TOKEN', token: userToken });
+    }, 1000);
+  }, []);
+
+  if (LoginState.isLoading) {
+    return(
+      <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+        <ActivityIndicator size="large" />
+      </View>
+    )
+  }
+
   return (
-    <NavigationContainer>
-      <MyTabs />
-    </NavigationContainer>
+    <AuthContext.Provider value={authContext}>
+      <NavigationContainer>
+        { LoginState.userToken !== null ? (
+          <MyTabs />
+        )
+      :
+        <LoginScreen />
+      }
+      </NavigationContainer>
+    </AuthContext.Provider>
   );
 }

@@ -1,52 +1,69 @@
 import * as React from 'react';
-import { ScrollView, Text, View, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
+import { FlatList, ScrollView, Text, View, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 
 const metaPassos = 5000;
-let novoPassos;
 const metaDias = 3;
-let novoDias;
 const metaForms = 2;
 
-const enviaMetas = () => {
-    //envia pro back-end
+let idx=0;
+const vecNum = [1, 2, 3];
+const metas = {
+    'Pedro':[
+        {meta:"Correr mais",
+        cumprida:'Sim'},
+        {meta:"Nadar",
+        cumprida:'Sim'},
+        {meta:"Parar de comer besteira",
+        cumprida:'Não'},
+        {meta:"Correr mais",
+        cumprida:'Sim'},
+        {meta:"Nadar",
+        cumprida:'Sim'},
+        {meta:"Parar de comer besteira",
+        cumprida:'Não'},
+        {meta:"Correr mais",
+        cumprida:'Sim'},
+        {meta:"Nadar",
+        cumprida:'Sim'},
+        {meta:"Parar de comer besteira",
+        cumprida:'Não'},
+        {meta:"Correr mais",
+        cumprida:'Sim'},
+        {meta:"Nadar",
+        cumprida:'Sim'},
+        {meta:"Parar de comer besteira",
+        cumprida:'Não'},
+        {meta:"Correr mais",
+        cumprida:'Sim'},
+        {meta:"Nadar",
+        cumprida:'Sim'},
+        {meta:"Parar de comer besteira",
+        cumprida:'Não'},
+        {meta:"Correr mais",
+        cumprida:'Sim'},
+        {meta:"Nadar",
+        cumprida:'Sim'},
+        {meta:"Parar de comer besteiraaa",
+        cumprida:'Não'},
+    ],
+    
+
 }
+
 
 const MetasScreen = () => {
     return (
         <View style={{ backgroundColor:'#ffffff', marginHorizontal:15, marginTop:15, flex: 1, justifyContent: 'flex-start', alignItems: 'center' }}>
             <View style={styles.metasAtuais}>
-                <Text style={{padding: 5, fontSize: 21}}>Suas metas para esta semana:</Text>
-                <Text style={{padding: 5, fontSize: 17}}>
-                    <Text>Caminhe </Text>
-                    <Text style={{color: 'white', fontWeight: "bold"}}>{metaPassos} </Text>
-                    <Text>passos por dia em </Text>
-                    <Text style={{color: 'white', fontWeight: "bold"}}>{metaDias} </Text>
-                    <Text>dias desta semana.</Text>
-                </Text>
-                <Text style={{padding: 5, fontSize: 17}}>
-                    <Text>
-                        Responda os formulários diários todos os dias por {metaForms} semanas.
-                    </Text>
-                </Text>
+                <Text style={[styles.tituloMetas,]}>Suas metas para esta semana:</Text>
+                <FlatList
+                data={metas['Pedro']}
+                renderItem={({item}) => <Text style={styles.itemMeta}>&#x2B; {item.meta}</Text>}>   
+                </FlatList>
             </View>
-            <View >
-                <Text style={{ padding: 10, fontSize: 15 }}>Deseja modificar suas metas? Toque no botão abaixo:</Text>
-                <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-                    <TextInput onChange={text => novoPassos = text} id='passos' keyboardType='decimal-pad'
-                        style={{ padding: 10, width: '45%', height: 40, borderColor: 'gray', borderWidth: 1 }}
-                        placeholder = 'Passos por dia'
-                    />
-                    <TextInput onChange={text => novoDias = text} id='dias' keyboardType='decimal-pad'
-                        style={{ padding: 10, width: '45%', height: 40, borderColor: 'gray', borderWidth: 1 }}
-                        placeholder = 'Dias ativos'
-                    />
-                </View>
-                <View style={{alignItems: 'center'}}>
-                    <TouchableOpacity /*onPress=enviaMetas()*/ style={[styles.bt, {borderWidth: 0, top: 10, }]} >
-                        <Text style={styles.textbt}>Alterar metas</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
+            
+            
+
         </View>
     );
 };
@@ -73,5 +90,20 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: '#595959',
         borderRadius: 10,
+    },
+    itemMeta:{
+        fontSize:20,
+        color:'#595959',
+    },
+    tituloMetas:{
+        fontSize:30,
+        padding:5,
+        textAlign:'center',
+        color:'white',
+        backgroundColor:'#595959',
+        borderWidth:2,
+        borderRadius:10,
+        borderColor:'#595959',
+
     },
 });
